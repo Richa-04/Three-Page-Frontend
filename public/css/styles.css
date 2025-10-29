@@ -1,0 +1,679 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+/* Screen Reader Only - for accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip Link for Accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #2c5f2d;
+  color: white;
+  padding: 0.5rem;
+  text-decoration: none;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* 12 Column Grid System */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Header Styles */
+.site-header {
+  background-color: #A5A58D;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo-link {
+  display: block;
+}
+
+.logo-link:focus {
+  outline: 0.125rem solid #fff;
+  outline-offset: 0.25rem;
+}
+
+.logo-image {
+  height: 3.5rem;
+  width: auto;
+  display: block;
+}
+
+/* Navigation Styles - CSS Only Dropdown - KEYBOARD ACCESSIBLE */
+.main-navigation {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-item {
+  position: relative;
+}
+
+/* Hide checkbox but keep accessible for keyboard */
+.nav-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+/* Focus outline for keyboard navigation */
+.nav-checkbox:focus + .nav-button {
+  outline: 0.125rem solid #fff;
+  outline-offset: 0.125rem;
+}
+
+.nav-button {
+  background-color: #97c97c;
+  color: #1a3a1a;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  user-select: none;
+  box-sizing: border-box;
+  line-height: 1.5;
+  vertical-align: middle;
+  min-width: 8.75rem;
+  text-align: center;
+}
+
+.nav-button:hover {
+  background-color: #7fb35e;
+}
+
+.dropdown-menu {
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 0.0625rem solid #ddd;
+  border-radius: 0.25rem;
+  min-width: 12rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-0.5rem);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  margin-top: 0;
+  padding-top: 0;
+  z-index: 200;
+  pointer-events: none;
+  max-height: 0;
+  overflow: hidden;
+}
+
+/* DESKTOP: Show dropdown on hover - NO GAP */
+@media (min-width: 36.0625rem) {
+  .nav-item:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+    max-height: 31.25rem;
+    overflow: visible;
+  }
+  
+  /* CRITICAL: Show dropdown when checkbox is checked (Space/Enter on checkbox) */
+  .nav-checkbox:checked ~ .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+    max-height: 31.25rem;
+    overflow: visible;
+  }
+  
+  /* Show dropdown when any child has focus */
+  .nav-item:focus-within .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+    max-height: 31.25rem;
+    overflow: visible;
+  }
+}
+
+/* MOBILE: Only use checkbox for toggle */
+@media (max-width: 36rem) {
+  .nav-checkbox:checked ~ .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+    max-height: 31.25rem;
+    overflow: visible;
+  }
+}
+
+.dropdown-menu li {
+  border-bottom: 0.0625rem solid #eee;
+}
+
+.dropdown-menu li:last-child {
+  border-bottom: none;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-menu a:focus {
+  outline: 0.125rem solid #2c5f2d;
+  outline-offset: -0.125rem;
+  background-color: #e8f5e9;
+}
+
+/* Main Content Styles */
+.main-content {
+  max-width: 75rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  min-height: 50vh;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #2c5f2d;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.75rem;
+  color: #2c5f2d;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  color: #1a3a1a;
+  margin-bottom: 0.75rem;
+}
+
+/* Card Grid Styles - Using 12 Column Grid */
+.featured-section,
+.news-section {
+  margin-bottom: 3rem;
+}
+
+/* Conservation Affairs cards - 3 cards spanning 4 columns each (4+4+4=12) */
+.conservation-affair-card {
+  grid-column: span 4;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.conservation-affair-card:nth-child(1){
+  background-color: #C0C9EE;
+  border-left: 0.25rem solid #898AC4;
+}
+
+.conservation-affair-card:nth-child(2){
+  background-color: #FCFFC1;
+  border-left: 0.25rem solid #FFE893;
+}
+
+.conservation-affair-card:nth-child(3){
+  background-color: #E5BEB5;
+  border-left: 0.25rem solid #896C6C;
+}
+
+.conservation-affair-card:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.conservation-affair-card p {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.conservation-affair-card .card-link {
+  align-self: flex-start;
+}
+
+/* News cards - 4 cards spanning 3 columns each (3+3+3+3=12) */
+.news-card {
+  grid-column: span 3;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.news-card:nth-child(1) {
+  background-color: #fff8e1;
+}
+
+.news-card:nth-child(2) {
+  background-color: #f3e5f5;
+}
+
+.news-card:nth-child(3) {
+  background-color: #e0f2f1;
+}
+
+.news-card:nth-child(4) {
+  background-color: #e5dece;
+}
+
+.news-card p {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.card-image {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.card-link {
+  display: inline-block;
+  padding: 0.625rem 1.25rem;
+  background-color: #2c5f2d;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0.25rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  align-self: center;
+  text-align: center;
+  min-width: 10rem;
+}
+
+.card-link:hover {
+  background-color: #1a3a1a;
+}
+
+.card-link:focus {
+  outline: 0.125rem solid #2c5f2d;
+  outline-offset: 0.125rem;
+}
+
+/* About Page Styles - Using 12 Column Grid */
+.about-content {
+  grid-column: 2 / 12;
+}
+
+.about-section {
+  margin-bottom: 2.5rem;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+}
+
+.about-section p {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+  line-height: 1.8;
+}
+
+.about-section p:last-child {
+  margin-bottom: 0;
+}
+
+/* Form Styles - Using 12 Column Grid */
+.form-container {
+  grid-column: 3 / 11;
+  background-color: #fff;
+  padding: 2.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.form-intro {
+  margin-bottom: 2rem;
+  color: #555;
+  line-height: 1.8;
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.required-indicator {
+  color: #d32f2f;
+  font-weight: 700;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group select {
+  padding: 0.75rem;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #2c5f2d;
+  box-shadow: 0 0 0 0.125rem rgba(44, 95, 45, 0.2);
+}
+
+fieldset {
+  border: 0.0625rem solid #ddd;
+  border-radius: 0.25rem;
+  padding: 1.5rem;
+}
+
+legend {
+  font-weight: 600;
+  color: #333;
+  padding: 0 0.5rem;
+}
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.checkbox-group:last-child {
+  margin-bottom: 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"]:focus {
+  outline: 0.125rem solid #2c5f2d;
+  outline-offset: 0.125rem;
+}
+
+.checkbox-group label {
+  margin-bottom: 0;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.form-actions {
+  margin-top: 1rem;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 1rem;
+  background-color: #2c5f2d;
+  color: #fff;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #1a3a1a;
+}
+
+.submit-button:focus {
+  outline: 0.125rem solid #2c5f2d;
+  outline-offset: 0.125rem;
+}
+
+/* Footer Styles */
+.site-footer {
+  background-color: #A5A58D;
+  color: #fff;
+  margin-top: 4rem;
+  padding: 2rem 1rem;
+}
+
+.footer-content {
+  max-width: 75rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer-nav a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: #97c97c;
+}
+
+.footer-nav a:focus {
+  outline: 0.125rem solid #fff;
+  outline-offset: 0.125rem;
+}
+
+/* Responsive Design */
+@media (max-width: 50rem) {
+  .conservation-affair-card {
+    grid-column: span 12;
+  }
+  
+  .news-card {
+    grid-column: span 6;
+  }
+  
+  .about-content {
+    grid-column: 1 / 13;
+  }
+  
+  .form-container {
+    grid-column: 1 / 13;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .main-navigation {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .nav-list {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 36rem) {
+  .news-card {
+    grid-column: span 12;
+  }
+  
+  .nav-list {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .nav-button {
+    width: 100%;
+    pointer-events: auto;
+  }
+  
+  /* Mobile dropdown - static positioning */
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border: none;
+    margin-top: 0.5rem;
+    transform: none;
+  }
+  
+  /* Disable hover on mobile */
+  .nav-item:hover .dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  
+  /* Disable focus-within on mobile */
+  .nav-item:focus-within .dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  
+  /* Closed state on mobile */
+  .nav-checkbox:not(:checked) ~ .dropdown-menu {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+  
+  /* Open state on mobile - only via checkbox */
+  .nav-checkbox:checked ~ .dropdown-menu {
+    max-height: 31.25rem;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    overflow: visible;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer-nav {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Giraffe Haven</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <header class="site-header">
+    <div class="header-content">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo.png" alt="Giraffe Haven logo" class="logo-image">
+      </a>
+      <nav class="main-navigation" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <input type="checkbox" id="menu-toggle" class="nav-checkbox">
+            <label for="menu-toggle" class="nav-button">Menu</label>
+            <ul class="dropdown-menu">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="register.html">Register</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <input type="checkbox" id="external-toggle" class="nav-checkbox">
+            <label for="external-toggle" class="nav-button">External Links</label>
+            <ul class="dropdown-menu">
+              <li><a href="https://en.wikipedia.org/wiki/Giraffe" target="_blank" rel="noopener">Wikipedia: Giraffes</a></li>
+              <li><a href="https://www.worldwildlife.org/species/giraffe" target="_blank" rel="noopener">WWF Giraffe Conservation</a></li>
+              <li><a href="https://nationalzoo.si.edu/animals/giraffe" target="_blank" rel="noopener">Smithsonian National Zoo</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content" id="main-content" tabindex="-1">
+    <h1>Register for Updates</h1>
+    
+    <div class="grid">
+      <div class="form-container">
+        <p class="form-intro">Fields marked with an asterisk (*) are required. Join our community of giraffe enthusiasts and receive updates about conservation efforts, educational programs, and special events. Stay connected with the latest news and opportunities to make a difference in giraffe conservation.</p>
+        
+        <form action="/register" method="POST" class="registration-form">
+          <div class="form-group">
+            <label for="full-name">
+              Full Name 
+              <span class="required-indicator" aria-label="required">*</span>
+              <span class="sr-only">required</span>
+            </label>
+            <input type="text" id="full-name" name="fullName" required aria-required="true">
+          </div>
+
+          <div class="form-group">
+            <label for="email">
+              Email Address 
+              <span class="required-indicator" aria-label="required">*</span>
+              <span class="sr-only">required</span>
+            </label>
+            <input type="email" id="email" name="email" required aria-required="true">
+          </div>
+
+          <div class="form-group">
+            <label for="interest-level">How did you hear about us?</label>
+            <select id="interest-level" name="referralSource">
+              <option value="">Please select an option</option>
+              <option value="search-engine">Search Engine</option>
+              <option value="social-media">Social Media</option>
+              <option value="friend">Friend or Family</option>
+              <option value="news">News Article</option>
+              <option value="zoo">Zoo Visit</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <fieldset class="form-group">
+            <legend>What updates would you like to receive?</legend>
+            <div class="checkbox-group">
+              <input type="checkbox" id="newsletter" name="newsletter" value="yes">
+              <label for="newsletter">Monthly Newsletter</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="events" name="events" value="yes">
+              <label for="events">Event Announcements</label>
+            </div>
+            <div class="checkbox-group">
+              <input type="checkbox" id="conservation" name="conservation" value="yes">
+              <label for="conservation">Conservation Updates</label>
+            </div>
+          </fieldset>
+
+          <div class="form-actions">
+            <button type="submit" class="submit-button">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Giraffe Haven. All rights reserved.</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="donate.html">Donate</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
