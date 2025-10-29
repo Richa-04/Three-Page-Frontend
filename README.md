@@ -1,4 +1,4 @@
-# Giraffe Haven - Multi-page Animal Website
+# Giraffe Haven - Multi-page Website
 
 A responsive, accessible website dedicated to dragons, showcasing modern web development practices with semantic HTML, CSS Grid, and adaptive design principles.
 
