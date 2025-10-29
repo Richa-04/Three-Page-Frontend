@@ -1,8 +1,8 @@
-# Dragon Haven - Multi-page Animal Website
+# Giraffe Haven - Multi-page Animal Website
 
 A responsive, accessible website dedicated to dragons, showcasing modern web development practices with semantic HTML, CSS Grid, and adaptive design principles.
 
-## 🐉 Project Overview
+## Project Overview
 
 Dragon Haven is a multi-page website built to demonstrate fundamental web development skills including semantic HTML structure, CSS layout techniques, responsive/adaptive design, and web accessibility standards. The site features information about dragons across three main pages with a focus on clean design and user experience.
 
@@ -71,9 +71,3 @@ User registration form to join the dragon enthusiast community
 Images used in this project are either personal copyright or sourced from:
 - Unsplash (Free License)
 - Google Fonts Icons (Apache License)
-
-See `licenses.txt` for detailed image attribution.
-
----
-
-*This project was created as part of a web development course to demonstrate fundamental frontend development skills.*
